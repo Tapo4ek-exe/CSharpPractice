@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ArithmeticalMeanCalculating
+﻿namespace PracticeClassLibrary
 {
-    static class CustomMath
+    public static class CustomMath
     {
         // Функция для подсчета среднего арифметического чисел
         public static double Average(params double[] numbers)

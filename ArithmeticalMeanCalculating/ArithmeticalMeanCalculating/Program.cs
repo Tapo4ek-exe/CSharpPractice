@@ -1,4 +1,4 @@
-﻿using ArithmeticalMeanCalculating;
+﻿using PracticeClassLibrary;
 
 class Program
 {
