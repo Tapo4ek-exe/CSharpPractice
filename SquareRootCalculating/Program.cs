@@ -10,14 +10,14 @@
             string? input = Console.ReadLine();
             bool isConverted = double.TryParse(input, out number);
 
-            /// Проверка успеха конвертации
+            // Проверка успеха конвертации
             if (!isConverted)
             {
                 Console.WriteLine($"Ошибка: {input} не является числом!");
                 return;
             }
 
-            /// Проверка числа на отрицательность
+            // Проверка числа на отрицательность
             if (number < 0)
             {
                 Console.WriteLine("Ошибка: корень отрицательного числа вычислить невозможно!");
