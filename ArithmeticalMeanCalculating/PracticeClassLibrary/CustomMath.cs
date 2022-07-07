@@ -3,16 +3,16 @@
     public static class CustomMath
     {
         // Функция для подсчета среднего арифметического чисел
-        public static double Average(params double[] numbers)
+        public static double Average(in double number1, in double number2, params double[] otherNumbers)
         {
             // Подсчет суммы чисел
-            double sum = 0;
-            foreach (double number in numbers)
+            double sum = number1 + number2;
+            foreach (double number in otherNumbers)
             {
                 sum += number;
             }
 
-            return sum / numbers.Length;
+            return sum / (otherNumbers.Length + 2);
         }
     }
 }

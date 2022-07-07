@@ -12,7 +12,7 @@ class Program
             string? input = Console.ReadLine();
             bool isConverted = double.TryParse(input, out numbers[index]);
             
-            /// Проверка успеха конвертации
+            // Проверка успеха конвертации
             if (!isConverted)
             {
                 Console.WriteLine($"Ошибка: {input} не является числом!");
@@ -20,7 +20,7 @@ class Program
             }
         }
 
-        double result = CustomMath.Average(numbers);
+        double result = CustomMath.Average(numbers[0], numbers[1], numbers[2]);
         Console.WriteLine($"Среднее арифметическое: {result}");
     }
 }
