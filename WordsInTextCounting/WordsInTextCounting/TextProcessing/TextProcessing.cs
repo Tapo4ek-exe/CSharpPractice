@@ -41,10 +41,11 @@
         private static int CountWordsMultithreaded(string text)
         {
             // Подготовка к подсчету
+            totalWordCount = 0;
             string preparedText = new(text.Where((c) => (char.IsLetter(c) || char.IsWhiteSpace(c))).ToArray());
+            if (preparedText.Length == 0) return 0;
             if (!char.IsWhiteSpace(preparedText[^1]))
                 preparedText += " ";
-            totalWordCount = 0;
 
             // Создание оптимального кол-ва потоков
             int threadCount = preparedText.Length / minLengthPerThread;
