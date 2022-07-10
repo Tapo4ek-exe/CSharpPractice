@@ -25,7 +25,7 @@
         }
 
 
-        // Подсчет слов в подготовленной строке в однопоточном режиме
+        // Подсчет слов в строке в однопоточном режиме
         private static int CountWordsSingleThreaded(string text)
         {
             // Подготовка текста для подсчета
@@ -37,7 +37,7 @@
         }
 
 
-        // Подсчет слов в подготовленной в строке с распараллеливанием
+        // Подсчет слов в строке с распараллеливанием
         private static int CountWordsMultithreaded(string text)
         {
             // Подготовка к подсчету
@@ -53,8 +53,8 @@
             Thread[] threads = new Thread[threadCount];
 
             // Распределение задач по потокам
-            int start = 0, length = preparedText.Length / threads.Length, end = length; // определяют подстроку: индекс начала, базовая длина и
-            for (int index = 0; index < threads.Length; index++)                        // индекс конца
+            int start = 0, length = preparedText.Length / threads.Length, end = length; // определяют подстроку: индекс начала, базовая длина
+            for (int index = 0; index < threads.Length; index++)                        // и индекс конца
             {
                 // Корректировка подстроки
                 bool startCharIsWhiteSpace = char.IsWhiteSpace(preparedText[start]);    // подстрока начинается с white-space символа
@@ -67,15 +67,14 @@
                         break;
 
                     if (!endCharIsWhiteSpace && end + 1 < preparedText.Length)          // сдвигаем индекс конца подстроки
-                        end++;                                                          // если там находится white-space символ
+                        end++;                                                          // если там не white-space символ
                     else if (end + 1 >= preparedText.Length)
                         break;
 
                     startCharIsWhiteSpace = char.IsWhiteSpace(preparedText[start]);
                     endCharIsWhiteSpace = char.IsWhiteSpace(preparedText[end - 1]);
                 }
-                Console.WriteLine($"start: {start}, end: {end}, length: {preparedText.Length}");
-                Console.WriteLine(preparedText[start..end]);
+
                 // Запуск потока
                 threads[index] = new Thread(new ParameterizedThreadStart(CountWordsThread));
                 CountWordsThreadParameter parameter = new(preparedText, start, end);
