@@ -1,0 +1,24 @@
+version: '3.4'
+
+services: 
+
+  consumer:
+    image: consumer-web-api
+    build:
+      context: ConsumerWebAPI
+      dockerfile: Dockerfile
+    ports:
+      - "5907:80"
+  publisher:
+    image: publisher-web-api
+    build:
+      context: PublisherWebAPI
+      dockerfile: Dockerfile
+    ports: 
+      - "5908:80"
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+
